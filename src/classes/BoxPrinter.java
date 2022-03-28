@@ -1,50 +1,43 @@
 package classes;
 
+import java.util.HashMap;
+
 public class BoxPrinter {
-    private static int windowWidth = 40;
+    private static int windowWidth = 45;
 
     private static StringBuilder topLine;
     private static StringBuilder bottomLine;
 
-    public static int clamp(int val, int min, int max) {
+    private static HashMap<String, String[]> lineOrientationMap = new HashMap<String, String[]>();
+
+    static {
+        lineOrientationMap.put("top", new String[]{"┌", "┐"});
+        lineOrientationMap.put("bottom", new String[]{"└", "┘"});
+    }
+
+    private static int clamp(int val, int min, int max) {
         return Math.max(min, Math.min(max, val));
     }
 
-    public static void printLine(String orientation) {
-        // Overkill but.. ¯\_(ツ)_/¯ I was also planning on supporting width-changing in real-time so.. re-calculating.
-        // Also also, could also declare / set lastCall = 0 or 1 and check it, print topLine / bottomLine respectively.
-        // i.e. orientation = lastCall ? "top" : "bottom";
-        switch (orientation) {
-            case "top":
-                if (topLine != null) {
-                    System.out.println(topLine);
-                    return;
-                }
+    private static StringBuilder lineBuilder(String orientation) {
+        String[] cornerObjects = lineOrientationMap.get(orientation);
 
-                topLine = new StringBuilder();
-                topLine.append("┌");
-                topLine.append("-".repeat(windowWidth + 2));
-                topLine.append("┐");
-
-                System.out.println(topLine);
-                break;
-            case "bottom":
-                if (bottomLine != null) {
-                    System.out.println(bottomLine);
-                    return;
-                }
-
-                bottomLine = new StringBuilder();
-                bottomLine.append("└");
-                bottomLine.append("-".repeat(windowWidth + 2));
-                bottomLine.append("┘");
-
-                System.out.println(bottomLine);
-                break;
-            default:
-                System.out.println("Invalid orientation!");
-                break;
+        if (cornerObjects == null) {
+            System.out.println(String.format("Orientation \"%s\" does not exist.", orientation));
+            return null;
         }
+
+        StringBuilder newLine = new StringBuilder();
+        newLine.append(cornerObjects[0]);
+        newLine.append("-".repeat(windowWidth + 2));
+        newLine.append(cornerObjects[1]);
+
+        return newLine;
+    }
+
+    // Kinda a useless wrapper but.. ┐(︶▽︶)┌
+    public static void printLine(String orientation) {
+        System.out.println(lineBuilder(orientation));
     }
 
     public static void printDivider() {
@@ -80,6 +73,7 @@ public class BoxPrinter {
             if (input.equalsIgnoreCase("{[div]}")) {
                 printDivider();
             } else {
+                // Truncate with dots at length of windowWidth - 3
                 printRow(input.length() > windowWidth ? input.substring(0, windowWidth - 3) + "..." : input);
             }
         }
