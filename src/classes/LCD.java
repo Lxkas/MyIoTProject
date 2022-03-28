@@ -35,7 +35,7 @@ public class LCD {
 
     public static void showLoginMenu() {
         BoxPrinter.printBox(new String[]{
-                "Login Menu. Press F1 for more information.",
+                "Login Menu. Press F1 for more information",
                 "{[div]}",
                 "",
                 "Enter Username:"
@@ -95,7 +95,7 @@ public class LCD {
 
     public static void showShutdown() {
         BoxPrinter.printBox(new String[]{
-                "Shutting down...",
+                "Shutting Down...",
                 "{[div]}",
                 "",
                 "Please wait while the system is",

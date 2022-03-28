@@ -36,17 +36,17 @@ public class BoxPrinter {
     }
 
     // Kinda a useless wrapper but.. ┐(︶▽︶)┌
-    public static void printLine(String orientation) {
+    private static void printLine(String orientation) {
         System.out.println(lineBuilder(orientation));
     }
 
-    public static void printDivider() {
+    private static void printDivider() {
         System.out.print("|");
         System.out.print("-".repeat(windowWidth + 2));
         System.out.println("|");
     }
 
-    public static void printRow(String input) {
+    private static void printRow(String input) {
         System.out.print("| ");
         System.out.print(input);
         // Initially I wanted to put a length limit here, but... might be in parseLine instead
