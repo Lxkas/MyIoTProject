@@ -29,7 +29,7 @@ public class BoxPrinter {
 
         StringBuilder newLine = new StringBuilder();
         newLine.append(cornerObjects[0]);
-        newLine.append("-".repeat(windowWidth + 2));
+        newLine.append("─".repeat(windowWidth + 2));
         newLine.append(cornerObjects[1]);
 
         return newLine;
@@ -41,17 +41,17 @@ public class BoxPrinter {
     }
 
     private static void printDivider() {
-        System.out.print("|");
-        System.out.print("-".repeat(windowWidth + 2));
-        System.out.println("|");
+        System.out.print("├");
+        System.out.print("─".repeat(windowWidth + 2));
+        System.out.println("┤");
     }
 
     private static void printRow(String input) {
-        System.out.print("| ");
+        System.out.print("│ ");
         System.out.print(input);
         // Initially I wanted to put a length limit here, but... might be in parseLine instead
         System.out.print(" ".repeat(clamp(windowWidth - input.length(), 0, windowWidth)));
-        System.out.println(" |");
+        System.out.println(" │");
     }
 
     public static void printBox(String input) {
