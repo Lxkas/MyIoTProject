@@ -5,9 +5,6 @@ import java.util.HashMap;
 public class BoxPrinter {
     private static int windowWidth = 45;
 
-    private static StringBuilder topLine;
-    private static StringBuilder bottomLine;
-
     private static HashMap<String, String[]> lineOrientationMap = new HashMap<String, String[]>();
 
     static {

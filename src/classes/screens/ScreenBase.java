@@ -15,10 +15,6 @@ public abstract class ScreenBase {
         this.screenStrings = screenStrings;
     }
 
-    String[] getScreenStrings() {
-        return screenStrings;
-    }
-
     String askForInput(String question) {
         Scanner scanner = new Scanner(System.in);
         System.out.print(question);
@@ -31,7 +27,7 @@ public abstract class ScreenBase {
     }
 
     void action() {
-
+        System.out.println("Action was not set xd");
     }
 
     void switchTo() {
@@ -42,7 +38,7 @@ public abstract class ScreenBase {
     }
 
     public void printScreenString() {
-        printBox(getScreenStrings());
+        printBox(screenStrings);
     }
 
     // Uh.. I'll figure out this wrapper later.
