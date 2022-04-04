@@ -9,7 +9,7 @@ import static classes.BoxPrinter.printBox;
 public abstract class ScreenBase {
 
     // Protected because I want to be able to "overwrite" this in subclasses.
-    protected String[] screenStrings;
+    protected final String[] screenStrings;
 
     public ScreenBase(String[] screenStrings) {
         this.screenStrings = screenStrings;
@@ -20,6 +20,11 @@ public abstract class ScreenBase {
         System.out.print(question);
 
         return scanner.nextLine();
+    }
+
+    // So it can be overwritten, and the screen strings can be generated on the fly.
+    String[] getScreenStrings() {
+        return screenStrings;
     }
 
     boolean askForConfirmation(String action) {
@@ -38,7 +43,7 @@ public abstract class ScreenBase {
     }
 
     public void printScreenString() {
-        printBox(screenStrings);
+        printBox(getScreenStrings());
     }
 
     // Uh.. I'll figure out this wrapper later.

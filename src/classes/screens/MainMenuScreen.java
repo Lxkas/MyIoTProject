@@ -1,8 +1,5 @@
 package classes.screens;
 
-// TODO: Remove all references to LCD, make them their own screens with confirmations
-import classes.LCD;
-
 import static java.lang.System.exit;
 
 public class MainMenuScreen extends ScreenBase {
