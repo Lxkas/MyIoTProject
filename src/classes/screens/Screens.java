@@ -2,8 +2,8 @@ package classes.screens;
 
 public class Screens {
     public static final MainMenuScreen MainMenu = new MainMenuScreen(new String[]{
-            "Welcome to the Stamford LCD Library Demo",
-            "Please select a function (1-3)",
+            "{[ac]}Welcome to the Stamford LCD Library Demo",
+            "{[ac]}Please select a function (1-3)",
             "{[div]}",
             "",
             "1. Login",

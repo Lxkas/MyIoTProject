@@ -1,8 +1,6 @@
 package classes;
 
-import classes.screens.LoginScreen;
-import classes.screens.MainMenuScreen;
-import com.sun.tools.javac.Main;
+import classes.screens.Screens;
 
 public class LCD {
     public static void clearScreen() {
@@ -19,15 +17,17 @@ public class LCD {
     public static void showMainMenu() {
         clearScreen();
 
-        BoxPrinter.printBox(new String[]{
-                "Welcome to the Stamford LCD Library Demo",
-                "Please select a function (1-3)",
-                "{[div]}",
-                "",
-                "1. Login",
-                "2. Restart",
-                "3. Shutdown",
-        });
+        Screens.MainMenu.printScreenString();
+
+//        BoxPrinter.printBox(new String[]{
+//                "Welcome to the Stamford LCD Library Demo",
+//                "Please select a function (1-3)",
+//                "{[div]}",
+//                "",
+//                "1. Login",
+//                "2. Restart",
+//                "3. Shutdown",
+//        });
 
 //        // 80 characters wide.
 //        System.out.println(" ------------------------------------------ ");
