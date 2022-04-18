@@ -16,7 +16,7 @@ public class UserHandler {
     public static final DatabaseHandler UserDatabase = new DatabaseHandler(USERDB_NAME, USERDB_USERNAME, USERDB_PASSWORD);
 
     private static final String passwordSalter(String password) {
-        // Basic for now, too laZy (-ω-、)
+        // Basic for now, too laZy (-ω-、) prolly gonna switch to PBKDF2 later
         return Hashing.sha256Hash(password + USERDB_PASSWORD_SALT);
     }
 

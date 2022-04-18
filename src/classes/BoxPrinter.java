@@ -86,6 +86,7 @@ public class BoxPrinter {
         if (matcher.find()) {
             String foundPlaceholder = matcher.group(0);
 
+            // TODO: This only supports once placeholder per line, fix that later xd maybe just let it passthrough?
             switch (foundPlaceholder) {
                 case "div":
                     printDivider();

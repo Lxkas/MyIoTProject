@@ -18,6 +18,8 @@ USERDB_PASSWORD=password
 USERDB_PASSWORD_SALT=password_salt 
 ```
 
+* This connects to `jdbc:mysql://localhost:3306/USERDB_NAME` so if you change ports or w/e, you'll need to modify the DatabaseHandler. 
+
 ##
 Creation date: `8:00 AM - 28/3/2022`
 
