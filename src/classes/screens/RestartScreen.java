@@ -2,6 +2,7 @@ package classes.screens;
 
 import classes.BoxPrinter;
 import classes.LCD;
+import utils.ConsoleColors;
 
 public class RestartScreen extends ScreenBase {
     public RestartScreen(String[] screenStrings) {

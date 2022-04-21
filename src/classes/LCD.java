@@ -1,8 +1,11 @@
 package classes;
 
+import classes.screens.ScreenBase;
 import classes.screens.Screens;
 
 public class LCD {
+    public static ScreenBase previousScreen = Screens.MainMenu;
+
     public static void clearScreen() {
 //        System.out.print("\033[H\033[2J");
 //        System.out.flush();

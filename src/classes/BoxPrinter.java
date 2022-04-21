@@ -25,6 +25,7 @@ public class BoxPrinter {
     }
 
     private static String[] getPadding(String input, Alignment alignment) {
+        // TODO: Strip escape codes before computing lol.
         int inputLength = input.length();
 
         switch (alignment) {

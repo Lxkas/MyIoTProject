@@ -37,6 +37,9 @@ public abstract class ScreenBase {
 
     void switchTo() {
         // TODO: add a boolean param to this method, if false, don't clear screen.
+        // TODO: check if class is the same, don't set previous screen to the same caller.
+        LCD.previousScreen = this;
+
         LCD.clearScreen();
         printScreenString();
         action();

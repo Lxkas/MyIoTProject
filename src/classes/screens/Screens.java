@@ -1,7 +1,7 @@
 package classes.screens;
 
 public class Screens {
-    public static final MainMenuScreen MainMenu = new MainMenuScreen(new String[]{
+    public static final MainMenuScreen MainMenu = new MainMenuScreen(new String[] {
             "{[ac]}Welcome to the Stamford LCD Library Demo",
             "{[ac]}Please select a function (1-3)",
             "{[div]}",
