@@ -1,5 +1,7 @@
 package classes;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -13,6 +15,7 @@ public class BoxPrinter {
         RIGHT
     }
 
+    // Could've initialized this with double braces but aNTi PaTtErn HuRr dUrR
     private static HashMap<String, String[]> lineOrientationMap = new HashMap<String, String[]>();
 
     static {
@@ -24,41 +27,18 @@ public class BoxPrinter {
         return Math.max(min, Math.min(max, val));
     }
 
-    private static String[] getPadding(String input, Alignment alignment) {
-        // TODO: Strip escape codes before computing lol.
-        int inputLength = input.length();
-
+    private static String getPaddedText(String input, Alignment alignment) {
         switch (alignment) {
             case LEFT:
-                return new String[]{
-                        "",
-                        // Initially I wanted to put a length limit here, but... might be in parseLine instead
-                        " ".repeat(clamp(windowWidth - inputLength, 0, windowWidth))
-                };
+                return StringUtils.rightPad(input, windowWidth);
             case CENTER:
-                int spaceLeft = windowWidth - inputLength;
-                String spacePadding = " ".repeat(Math.round(spaceLeft / 2));
-
-                return new String[]{
-                        spacePadding,
-                        // Check if spaceLeft is an even number, if it is, add another space to compensate.
-                        spacePadding + (spaceLeft % 2 == 0 ? "" : " ")
-                };
+                return StringUtils.center(input, windowWidth);
             case RIGHT:
-                return new String[]{
-                        " ".repeat(clamp(windowWidth - inputLength, 0, windowWidth)),
-                        ""
-                };
+                return StringUtils.leftPad(input, windowWidth);
             default:
-                System.out.println("Invalid alignment passed to getPadding!");
-                break;
+                System.out.println("Invalid alignment passed to getPaddedText!");
+                return "Broke BAD";
         }
-
-
-        return new String[]{
-                "",
-                ""
-        };
     }
 
     private static StringBuilder lineBuilder(String orientation) {
@@ -87,7 +67,7 @@ public class BoxPrinter {
         if (matcher.find()) {
             String foundPlaceholder = matcher.group(0);
 
-            // TODO: This only supports once placeholder per line, fix that later xd maybe just let it passthrough?
+            // TODO: This only supports once placeholder per line, fix that later xd make it a recursive function
             switch (foundPlaceholder) {
                 case "div":
                     printDivider();
@@ -122,15 +102,8 @@ public class BoxPrinter {
     }
 
     private static void printRow(String input, Alignment alignment) {
-        String[] spacePadding = getPadding(input, alignment);
-
-        String paddingLeft = spacePadding[0];
-        String paddingRight = spacePadding[1];
-
         System.out.print("│ ");
-        System.out.print(paddingLeft);
-        System.out.print(input);
-        System.out.print(paddingRight);
+        System.out.print(getPaddedText(input, alignment));
         System.out.println(" │");
     }
 
