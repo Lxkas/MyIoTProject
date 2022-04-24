@@ -7,7 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class BoxPrinter {
-    private static int windowWidth = 60;
+    private static int windowWidth = 80;
 
     public static enum Alignment {
         LEFT,

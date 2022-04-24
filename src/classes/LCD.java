@@ -3,6 +3,8 @@ package classes;
 import classes.screens.ScreenBase;
 import classes.screens.Screens;
 
+import static classes.ConsoleUtils.*;
+
 public class LCD {
     public static ScreenBase previousScreen = Screens.MainMenu;
 
@@ -10,7 +12,22 @@ public class LCD {
 //        System.out.print("\033[H\033[2J");
 //        System.out.flush();
 
-        System.out.println("\n".repeat(25));
+//        System.out.println("\n".repeat(25));
+
+        hideCursor();
+
+        for (int y = 0; y < 25; y++) {
+            // 90 because I have weird padding lol.
+            for (int x = 0; x < 90; x++) {
+                // Yea.. I have no idea.
+                gotoXY(y, x);
+                System.out.print(" ");
+            }
+        }
+
+        gotoXY(0, 0);
+
+        showCursor();
 
 //        for (int i = 0; i < 25; i++) {
 //            System.out.println();
