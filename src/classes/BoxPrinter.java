@@ -101,7 +101,7 @@ public class BoxPrinter {
         System.out.println("┤");
     }
 
-    private static void printRow(String input, Alignment alignment) {
+    public static void printRow(String input, Alignment alignment) {
         System.out.print("│ ");
         System.out.print(getPaddedText(input, alignment));
         System.out.println(" │");

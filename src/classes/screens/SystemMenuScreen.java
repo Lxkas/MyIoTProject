@@ -30,7 +30,7 @@ public class SystemMenuScreen extends ScreenBase {
                 "Select a Function (1-4)",
                 "{[div]}",
                 "",
-                "1. Change AC Temperature set point",
+                String.format("1. Change AC Temperature set point (%s)", currentAcTemperature),
                 String.format("2. %s IP Camera", cameraEnabled ? "Disable" : "Enable"),
                 String.format("3. Turn anti-theft system %s", antiTheftEnabled ? "off" : "on"),
                 "4. Exit"

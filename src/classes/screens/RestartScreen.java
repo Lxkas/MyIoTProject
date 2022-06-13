@@ -1,8 +1,9 @@
 package classes.screens;
 
 import classes.BoxPrinter;
+import classes.ConsoleUtils;
 import classes.LCD;
-import utils.ConsoleColors;
+import utils.AnimationHelper;
 
 public class RestartScreen extends ScreenBase {
     public RestartScreen(String[] screenStrings) {
@@ -21,6 +22,27 @@ public class RestartScreen extends ScreenBase {
                     "preparing for a restart."
             });
 
+            AnimationHelper animationHelper = new AnimationHelper();
+
+            String[] steps = {
+                    "Restarting...",
+                    "Restarting",
+                    "Restarting.",
+                    "Restarting..",
+                    "Restarting...",
+            };
+
+            for (int i = 0; i < 20; i++) {
+                try {
+                    animationHelper.animate(steps, i);
+                    Thread.sleep(200);
+                } catch (Exception e) {
+
+                }
+            }
+
+            ConsoleUtils.showCursor();
+
             new java.util.Timer().schedule(
                     new java.util.TimerTask() {
                         @Override
@@ -28,7 +50,7 @@ public class RestartScreen extends ScreenBase {
                             Screens.MainMenu.switchTo();
                         }
                     },
-                    2000
+                    200
             );
         } else {
             // TODO: Return to previous screen
